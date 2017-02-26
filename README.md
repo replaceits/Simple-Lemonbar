@@ -1,6 +1,8 @@
 # Simple-Lemonbar
 A simple setup for lemonbar.
 
+![Lemonbar screenshot](https://i.imgur.com/rPCohVJ.png)
+
 ## Prerequisites
 [xdotool](https://github.com/jordansissel/xdotool)  
 [Font Awesome](https://github.com/FortAwesome/Font-Awesome)  
