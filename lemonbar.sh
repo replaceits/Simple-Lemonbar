@@ -77,13 +77,13 @@ Sound(){
 Language(){
 	CURRENTLANG=$(head -n 1 /tmp/uim-state)
 	if [[ $CURRENTLANG == *"English"* ]] ; then
-		echo -e " \uf1ab ENG"
+		echo -e " \uf0ac ENG"
 	elif [[ $CURRENTLANG == *"Katakana"* ]] ; then
-		echo -e " \uf1ab カタカナ"
+		echo -e " \uf0ac カタカナ"
 	elif [[ $CURRENTLANG == *"Hiragana"* ]] ; then
-		echo -e " \uf1ab ひらがな"
+		echo -e " \uf0ac ひらがな"
 	else
-		echo -e " \uf1ab \uf128"
+		echo -e " \uf0ac \uf128"
 	fi
 }
 
