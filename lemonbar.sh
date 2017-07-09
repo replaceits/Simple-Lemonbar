@@ -74,7 +74,20 @@ Sound(){
 	fi
 }
 
+Language(){
+	CURRENTLANG=$(head -n 1 /tmp/uim-state)
+	if [[ $CURRENTLANG == *"English"* ]] ; then
+		echo -e " \uf1ab ENG"
+	elif [[ $CURRENTLANG == *"Katakana"* ]] ; then
+		echo -e " \uf1ab カタカナ"
+	elif [[ $CURRENTLANG == *"Hiragana"* ]] ; then
+		echo -e " \uf1ab ひらがな"
+	else
+		echo -e " \uf1ab \uf128"
+	fi
+}
+
 while true; do
-	echo -e "%{l}" "%{c}$(ActiveWindow)" "%{r}$(Wifi)  $(Battery)  $(Sound)  $(Clock)"
+	echo -e "%{l}$(Language)" "%{c}$(ActiveWindow)" "%{r}$(Wifi)  $(Battery)  $(Sound)  $(Clock)"
 	sleep 0.1s
 done
