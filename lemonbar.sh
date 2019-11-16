@@ -1,14 +1,23 @@
 #!/usr/bin/bash
 
 Clock(){
-	DATE=$(date "+%m.%d.%y")
-	TIME=$(date "+%I:%M")
+	TIME=$(date "+%H:%M:%S")
+	echo -e -n " \uf017 ${TIME}" 
+}
 
-	echo -e -n "\uf073 ${DATE} \uf017 ${TIME}"
+Cal() {
+    DATE=$(date "+%a, %m %B %Y")
+    echo -e -n "\uf073 ${DATE}"
 }
 
 ActiveWindow(){
-	echo -n $(xdotool getwindowfocus getwindowname)
+	len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
+	max_len=70
+	if [ "$len" -gt "$max_len" ];then
+		echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
+	else
+		echo -n "$(xdotool getwindowfocus getwindowname)"
+	fi
 }
 
 Battery() {
@@ -88,6 +97,6 @@ Language(){
 }
 
 while true; do
-	echo -e "%{l}$(Language)" "%{c}$(ActiveWindow)" "%{r}$(Wifi)  $(Battery)  $(Sound)  $(Clock)"
+	echo -e "%{l}$(Language)" "%{c}$(ActiveWindow)" "%{r}$(Wifi)  $(Battery)  $(Sound)  $(Clock) $(Cal)"
 	sleep 0.1s
 done
